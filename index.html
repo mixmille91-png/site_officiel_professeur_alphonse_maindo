@@ -3,149 +3,251 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Professeur Alphonse Maindo Monga</title>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Playfair+Display&display=swap" rel="stylesheet">
+  <title>Professeur Alphonse Maindo Monga - Université de Kisangani</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
-:root {
+    :root {
       --primary: #002244;
       --accent: #ffd700;
       --text: #ffffff;
-}
+      --section-bg: rgba(0, 0, 50, 0.75);
+      --header-bg: rgba(0, 0, 50, 0.9);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
     body {
-      margin: 0;
       font-family: 'Montserrat', sans-serif;
       background: url('https://cdn.pixabay.com/photo/2016/11/29/03/53/college-1867485_1280.jpg') no-repeat center center fixed;
       background-size: cover;
       color: var(--text);
       scroll-behavior: smooth;
-}
+      line-height: 1.6;
+    }
 
     header {
       position: fixed;
       top: 0;
       width: 100%;
-      background: rgba(0, 0, 50, 0.85);
-      padding: 10px 20px;
+      background: var(--header-bg);
+      padding: 15px 20px;
       z-index: 1000;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      flex-wrap: wrap;
-}
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    }
+
+    .header-content {
+      max-width: 1200px;
+      width: 100%;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
 
     header h1 {
       font-family: 'Playfair Display', serif;
       font-size: 1.5em;
       margin: 0;
-}
+      color: var(--accent);
+    }
 
     nav {
       display: flex;
-      flex-wrap: wrap;
-}
+    }
 
     nav a {
-      margin: 0 10px;
+      margin: 0 15px;
       color: var(--text);
       text-decoration: none;
-      font-weight: bold;
-}
+      font-weight: 600;
+      padding: 8px 0;
+      position: relative;
+      transition: color 0.3s;
+    }
 
-.menu-toggle {
+    nav a:hover {
+      color: var(--accent);
+    }
+
+    nav a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--accent);
+      transition: width 0.3s;
+    }
+
+    nav a:hover::after {
+      width: 100%;
+    }
+
+    .menu-toggle {
       display: none;
       font-size: 1.5em;
       cursor: pointer;
       color: var(--accent);
-}
+    }
 
     section {
       padding: 100px 20px 60px;
-      background: rgba(0, 0, 50, 0.6);
-      margin-top: 60px;
+      background: var(--section-bg);
+      margin: 60px auto 20px;
       max-width: 900px;
-      margin-left: auto;
-      margin-right: auto;
-}
+      border-radius: 8px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    }
 
     h2 {
       font-family: 'Playfair Display', serif;
-      font-size: 1.8em;
-      margin-bottom: 10px;
-}
+      font-size: 2em;
+      margin-bottom: 20px;
+      color: var(--accent);
+      border-bottom: 2px solid var(--accent);
+      padding-bottom: 10px;
+    }
 
-.search-box {
+    p, li {
+      margin-bottom: 15px;
+    }
+
+    ul {
+      padding-left: 20px;
+    }
+
+    li {
+      margin-bottom: 10px;
+    }
+
+    .search-box {
       margin: 20px 0;
-}
+    }
 
     input[type="text"] {
-      padding: 10px;
+      padding: 12px 15px;
       width: 100%;
       border: none;
       border-radius: 5px;
       font-size: 1em;
-}
+      background: rgba(255, 255, 255, 0.9);
+    }
 
-.links a {
-      display: block;
-      margin: 10px 0;
+    .links a {
+      display: inline-block;
+      margin: 10px 15px 10px 0;
       color: var(--accent);
-}
+      text-decoration: none;
+      font-weight: 600;
+      padding: 8px 15px;
+      border: 1px solid var(--accent);
+      border-radius: 5px;
+      transition: all 0.3s;
+    }
+
+    .links a:hover {
+      background: var(--accent);
+      color: var(--primary);
+    }
+
+    .contact-email {
+      color: var(--accent);
+      font-weight: 600;
+      text-decoration: none;
+    }
+
+    .contact-email:hover {
+      text-decoration: underline;
+    }
 
     @media (max-width: 768px) {
       nav {
         display: none;
         flex-direction: column;
         width: 100%;
-}
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background: var(--header-bg);
+        padding: 15px 0;
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+      }
 
       nav.active {
         display: flex;
-}
+      }
 
-.menu-toggle {
+      .menu-toggle {
         display: block;
-}
+      }
 
       nav a {
-        margin: 10px 0;
-        padding: 10px;
-        background: rgba(0, 0, 50, 0.9);
-}
-}
+        margin: 5px 0;
+        padding: 10px 20px;
+        width: 100%;
+        text-align: center;
+      }
+
+      nav a::after {
+        display: none;
+      }
+
+      section {
+        margin: 60px 15px 20px;
+        padding: 80px 20px 40px;
+      }
+
+      h2 {
+        font-size: 1.6em;
+      }
+    }
   </style>
 </head>
 <body>
 
 <header>
-  <h1>Prof. Maindo</h1>
-  <div class="menu-toggle" onclick="toggleMenu()">☰</div>
-  <nav id="menu">
-    <a href="#bio">Biographie</a>
-    <a href="#publications">Publications</a>
-    <a href="#recherche">Recherche</a>
-    <a href="#liens">Liens</a>
-    <a href="#contact">Contact</a>
-  </nav>
+  <div class="header-content">
+    <h1>Prof. Alphonse Maindo Monga</h1>
+    <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+    <nav id="menu">
+      <a href="#bio">Biographie</a>
+      <a href="#publications">Publications</a>
+      <a href="#recherche">Recherche</a>
+      <a href="#liens">Liens</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
 </header>
 
 <section id="bio">
   <h2>Biographie</h2>
-  <p>Professeur ordinaire à l’Université de Kisangani, spécialiste en sciences politiques et administration publique. Chercheur émérite reconnu pour ses travaux sur la gouvernance et les conflits en Afrique centrale.</p>
+  <p>Professeur ordinaire à l'Université de Kisangani, spécialiste en sciences politiques et administration publique. Chercheur émérite reconnu pour ses travaux sur la gouvernance et les conflits en Afrique centrale.</p>
+  <p>Né le 10 septembre 1967 à Kisangani, il est diplômé en sciences politiques et administratives de l'Université de Kisangani (1985-1990) et docteur en science politique de l'Université Paris 1 Panthéon-Sorbonne.</p>
 </section>
 
 <section id="publications">
   <h2>Publications</h2>
   <ul>
-    <li>« Gouvernance et conflits en RDC »</li>
-    <li>« L’État en Afrique: entre autorité et légitimité »</li>
-    <li>Articles dans Revue Politique Africaine, Cahiers d’Études Africaines...</li>
+    <li><strong>« Voter en temps de guerre – Kisangani (RD Congo) 1997 »</strong> - L'Harmattan, 2001</li>
+    <li><strong>« L'université en chantier en RD Congo »</strong> (avec Pascal Kapagama) - Karthala, 2012</li>
+    <li><strong>« La républiquette de l'Ituri »</strong> - Politique africaine n°89, 2003</li>
+    <li><strong>« Survivre à la guerre des autres »</strong> - Politique africaine n°84, 2001</li>
+    <li>Articles dans Revue Politique Africaine, Cahiers d'Études Africaines...</li>
   </ul>
 </section>
 
 <section id="recherche">
   <h2>Recherche</h2>
-  <p>Thématiques: gouvernance, décentralisation, conflits armés, société civile. Collaborations avec CODESRIA, Université de Liège, CNRS.</p>
+  <p>Thématiques de recherche : gouvernance, décentralisation, conflits armés, société civile.</p>
+  <p>Collaborations avec CODESRIA, Université de Liège, CNRS, et chercheur associé au Centre d'étude des mondes africains (CEMAF).</p>
   <div class="search-box">
     <input type="text" placeholder="Rechercher une publication...">
   </div>
@@ -154,24 +256,58 @@
 <section id="liens">
   <h2>Liens officiels</h2>
   <div class="links">
-    <a href="https://fr.wikipedia.org/wiki/Alphonse_Maindo" target="_blank">Wikipédia</a>
-<a href="https://www.idref.fr/059674962" target="_blank">IDRef</a>
-    <a href="https://github.com/mixmille91-png/Alphonse_maindo" target="_blank">GitHub académique</a>
-    <a href="https://www.librairiedialogues.fr/personne/alphonse-maindo-monga-ngonga/826700/" target="_blank">Librairie Dialogues</a>
+    <a href="https://fr.wikipedia.org/wiki/Alphonse_Maindo" target="_blank" rel="noopener noreferrer">Wikipédia</a>
+    <a href="https://www.idref.fr/059674962" target="_blank" rel="noopener noreferrer">IDRef</a>
+    <a href="https://shs.cairn.info/publications-de-alphonse-maindo-monga-ngonga--90659?lang=fr" target="_blank" rel="noopener noreferrer">Publications Cairn</a>
+    <a href="https://rdc.harmattan.fr/index.asp?navig=auteurs&obj=artiste&no=14635" target="_blank" rel="noopener noreferrer">Éditions L'Harmattan</a>
   </div>
 </section>
 
 <section id="contact">
   <h2>Contact</h2>
-  <p>Email: alphonse.maindo@unikis.ac.cd</p>
+  <p>Email: <a href="mailto:alphonse.maindo@unikis.ac.cd" class="contact-email">alphonse.maindo@unikis.ac.cd</a></p>
+  <p>Université de Kisangani, République Démocratique du Congo</p>
 </section>
 
 <script>
   function toggleMenu() {
     const menu = document.getElementById('menu');
     menu.classList.toggle('active');
-}
+  }
+
+  // Fermer le menu quand on clique sur un lien (mobile)
+  document.querySelectorAll('nav a').forEach(link => {
+    link.addEventListener('click', () => {
+      const menu = document.getElementById('menu');
+      if (window.innerWidth <= 768) {
+        menu.classList.remove('active');
+      }
+    });
+  });
+
+  // Ajouter une classe active au lien de navigation correspondant à la section visible
+  window.addEventListener('scroll', () => {
+    const sections = document.querySelectorAll('section');
+    const navLinks = document.querySelectorAll('nav a');
+    
+    let current = '';
+    
+    sections.forEach(section => {
+      const sectionTop = section.offsetTop;
+      const sectionHeight = section.clientHeight;
+      if (scrollY >= (sectionTop - 100)) {
+        current = section.getAttribute('id');
+      }
+    });
+
+    navLinks.forEach(link => {
+      link.classList.remove('active');
+      if (link.getAttribute('href').substring(1) === current) {
+        link.classList.add('active');
+      }
+    });
+  });
 </script>
 
 </body>
-</html>
+  </html>
