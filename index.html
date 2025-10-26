@@ -1,625 +1,177 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Prof. Alphonse Maindo - Université de Kisangani</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Source+Sans+Pro:wght@300;400;600&display=swap" rel="stylesheet">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Professeur Alphonse Maindo Monga</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Playfair+Display&display=swap" rel="stylesheet">
+  <style>
+:root {
+      --primary: #002244;
+      --accent: #ffd700;
+      --text: #ffffff;
+}
 
-        :root {
-            --primary-color: #2c3e50;
-            --secondary-color: #3498db;
-            --accent-color: #e74c3c;
-            --text-color: #333;
-            --light-bg: #f8f9fa;
-            --white: #ffffff;
-            --shadow: 0 4px 6px rgba(0,0,0,0.1);
-            --transition: all 0.3s ease;
-        }
+    body {
+      margin: 0;
+      font-family: 'Montserrat', sans-serif;
+      background: url('https://cdn.pixabay.com/photo/2016/11/29/03/53/college-1867485_1280.jpg') no-repeat center center fixed;
+      background-size: cover;
+      color: var(--text);
+      scroll-behavior: smooth;
+}
 
-        body {
-            font-family: 'Source Sans Pro', sans-serif;
-            line-height: 1.6;
-            color: var(--text-color);
-            background: var(--light-bg);
-        }
+    header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(0, 0, 50, 0.85);
+      padding: 10px 20px;
+      z-index: 1000;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+}
 
-        /* Header et Navigation Fixe */
-        .header {
-            background: var(--white);
-            box-shadow: var(--shadow);
-            position: fixed;
-            top: 0;
-            width: 100%;
-            z-index: 1000;
-        }
+    header h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5em;
+      margin: 0;
+}
 
-        .nav-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            height: 70px;
-        }
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+}
 
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
+    nav a {
+      margin: 0 10px;
+      color: var(--text);
+      text-decoration: none;
+      font-weight: bold;
+}
 
-        .logo-img {
-            width: 50px;
-            height: 50px;
-            background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-weight: bold;
-            font-size: 12px;
-            text-align: center;
-        }
+.menu-toggle {
+      display: none;
+      font-size: 1.5em;
+      cursor: pointer;
+      color: var(--accent);
+}
 
-        .logo-text h1 {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.4em;
-            color: var(--primary-color);
-        }
+    section {
+      padding: 100px 20px 60px;
+      background: rgba(0, 0, 50, 0.6);
+      margin-top: 60px;
+      max-width: 900px;
+      margin-left: auto;
+      margin-right: auto;
+}
 
-        .logo-text p {
-            font-size: 0.8em;
-            color: var(--secondary-color);
-        }
+    h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8em;
+      margin-bottom: 10px;
+}
 
-        .nav-menu {
-            display: flex;
-            list-style: none;
-            gap: 30px;
-        }
+.search-box {
+      margin: 20px 0;
+}
 
-        .nav-menu a {
-            text-decoration: none;
-            color: var(--text-color);
-            font-weight: 600;
-            padding: 10px 15px;
-            border-radius: 25px;
-            transition: var(--transition);
-            position: relative;
-        }
+    input[type="text"] {
+      padding: 10px;
+      width: 100%;
+      border: none;
+      border-radius: 5px;
+      font-size: 1em;
+}
 
-        .nav-menu a:hover,
-        .nav-menu a.active {
-            background: var(--secondary-color);
-            color: var(--white);
-        }
+.links a {
+      display: block;
+      margin: 10px 0;
+      color: var(--accent);
+}
 
-        .nav-toggle {
-            display: none;
-            flex-direction: column;
-            cursor: pointer;
-        }
+    @media (max-width: 768px) {
+      nav {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+}
 
-        .nav-toggle span {
-            width: 25px;
-            height: 3px;
-            background: var(--primary-color);
-            margin: 3px 0;
-            transition: var(--transition);
-        }
+      nav.active {
+        display: flex;
+}
 
-        /* Hero Section */
-        .hero {
-            background: linear-gradient(rgba(44, 62, 80, 0.8), rgba(44, 62, 80, 0.8)), url('https://via.placeholder.com/1920x600/3498db/ffffff?text=Université+de+Kisangani');
-            background-size: cover;
-            background-position: center;
-            color: var(--white);
-            padding: 150px 20px 80px;
-            text-align: center;
-            margin-top: 70px;
-        }
+.menu-toggle {
+        display: block;
+}
 
-        .hero h2 {
-            font-family: 'Playfair Display', serif;
-            font-size: 3em;
-            margin-bottom: 20px;
-        }
-
-        .hero p {
-            font-size: 1.2em;
-            max-width: 600px;
-            margin: 0 auto;
-            opacity: 0.9;
-        }
-
-        /* Main Content */
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 60px 20px;
-        }
-
-        .section {
-            background: var(--white);
-            border-radius: 15px;
-            padding: 40px;
-            margin-bottom: 40px;
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-        }
-
-        .section:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
-        }
-
-        .section-header {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            margin-bottom: 30px;
-            padding-bottom: 15px;
-            border-bottom: 2px solid var(--light-bg);
-        }
-
-        .section-icon {
-            width: 50px;
-            height: 50px;
-            background: var(--secondary-color);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 1.2em;
-        }
-
-        .section-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 2em;
-            color: var(--primary-color);
-        }
-
-        /* Content Styles */
-        .content-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-        }
-
-        .info-card {
-            background: var(--light-bg);
-            padding: 25px;
-            border-radius: 10px;
-            border-left: 4px solid var(--secondary-color);
-        }
-
-        .info-card h4 {
-            color: var(--primary-color);
-            margin-bottom: 15px;
-            font-family: 'Playfair Display', serif;
-        }
-
-        .info-list {
-            list-style: none;
-        }
-
-        .info-list li {
-            margin-bottom: 12px;
-            padding-left: 25px;
-            position: relative;
-        }
-
-        .info-list li:before {
-            content: "▸";
-            color: var(--secondary-color);
-            position: absolute;
-            left: 0;
-            font-weight: bold;
-        }
-
-        .highlight {
-            background: linear-gradient(120deg, #a8edea 0%, #fed6e3 100%);
-            padding: 2px 6px;
-            border-radius: 4px;
-            font-weight: 600;
-        }
-
-        /* Table Styles */
-        .table-container {
-            overflow-x: auto;
-            margin-top: 20px;
-        }
-
-        .publication-table {
-            width: 100%;
-            border-collapse: collapse;
-            background: var(--white);
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
-
-        .publication-table th {
-            background: var(--primary-color);
-            color: var(--white);
-            padding: 15px;
-            text-align: left;
-            font-weight: 600;
-        }
-
-        .publication-table td {
-            padding: 15px;
-            border-bottom: 1px solid var(--light-bg);
-        }
-
-        .publication-table tr:hover {
-            background: var(--light-bg);
-        }
-
-        /* Button Styles */
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            background: var(--secondary-color);
-            color: var(--white);
-            padding: 12px 25px;
-            border-radius: 25px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: var(--transition);
-            border: none;
-            cursor: pointer;
-        }
-
-        .btn:hover {
-            background: var(--primary-color);
-            transform: translateY(-2px);
-        }
-
-        .btn-outline {
-            background: transparent;
-            border: 2px solid var(--secondary-color);
-            color: var(--secondary-color);
-        }
-
-        .btn-outline:hover {
-            background: var(--secondary-color);
-            color: var(--white);
-        }
-
-        .btn-group {
-            display: flex;
-            gap: 15px;
-            flex-wrap: wrap;
-            margin-top: 20px;
-        }
-
-        /* Footer */
-        .footer {
-            background: var(--primary-color);
-            color: var(--white);
-            padding: 40px 20px;
-            text-align: center;
-        }
-
-        .footer-content {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .nav-menu {
-                position: fixed;
-                left: -100%;
-                top: 70px;
-                flex-direction: column;
-                background: var(--white);
-                width: 100%;
-                text-align: center;
-                transition: var(--transition);
-                box-shadow: var(--shadow);
-                padding: 20px 0;
-            }
-
-            .nav-menu.active {
-                left: 0;
-            }
-
-            .nav-toggle {
-                display: flex;
-            }
-
-            .nav-toggle.active span:nth-child(1) {
-                transform: rotate(-45deg) translate(-5px, 6px);
-            }
-
-            .nav-toggle.active span:nth-child(2) {
-                opacity: 0;
-            }
-
-            .nav-toggle.active span:nth-child(3) {
-                transform: rotate(45deg) translate(-5px, -6px);
-            }
-
-            .hero {
-                padding: 120px 20px 60px;
-            }
-
-            .hero h2 {
-                font-size: 2em;
-            }
-
-            .section {
-                padding: 25px;
-            }
-
-            .section-title {
-                font-size: 1.6em;
-            }
-
-            .content-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .btn-group {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .btn {
-                width: 100%;
-                justify-content: center;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .container {
-                padding: 40px 15px;
-            }
-
-            .section {
-                padding: 20px;
-            }
-
-            .hero h2 {
-                font-size: 1.8em;
-            }
-
-            .section-title {
-                font-size: 1.4em;
-            }
-        }
-
-        /* Animation pour les sections */
-        .section-hidden {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.6s ease;
-        }
-
-        .section-visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    </style>
+      nav a {
+        margin: 10px 0;
+        padding: 10px;
+        background: rgba(0, 0, 50, 0.9);
+}
+}
+  </style>
 </head>
 <body>
-    <!-- Navigation Fixe -->
-    <header class="header">
-        <nav class="nav-container">
-            <div class="logo">
-                <div class="logo-img">UNIKIS</div>
-                <div class="logo-text">
-                    <h1>Prof. Alphonse Maindo</h1>
-                    <p>Université de Kisangani</p>
-                </div>
-            </div>
-            
-            <ul class="nav-menu" id="navMenu">
-                <li><a href="#academic" class="nav-link active">Profil Académique</a></li>
-                <li><a href="#engagement" class="nav-link">Engagements</a></li>
-                <li><a href="#bibliography" class="nav-link">Bibliographie</a></li>
-                <li><a href="#news" class="nav-link">Actualité</a></li>
-                <li><a href="#contact" class="nav-link">Contact</a></li>
-            </ul>
 
-            <div class="nav-toggle" id="navToggle">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-        </nav>
-    </header>
+<header>
+  <h1>Prof. Maindo</h1>
+  <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+  <nav id="menu">
+    <a href="#bio">Biographie</a>
+    <a href="#publications">Publications</a>
+    <a href="#recherche">Recherche</a>
+    <a href="#liens">Liens</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <h2>Professeur Alphonse Maindo</h2>
-        <p>Chercheur émérite et Enseignant à l'Université de Kisangani<br>Spécialiste en Sciences Politiques et Administration</p>
-    </section>
+<section id="bio">
+  <h2>Biographie</h2>
+  <p>Professeur ordinaire à l’Université de Kisangani, spécialiste en sciences politiques et administration publique. Chercheur émérite reconnu pour ses travaux sur la gouvernance et les conflits en Afrique centrale.</p>
+</section>
 
-    <!-- Main Content -->
-    <div class="container">
-        <!-- Section Profil Académique -->
-        <section id="academic" class="section section-hidden">
-            <div class="section-header">
-                <div class="section-icon">🧠</div>
-                <h2 class="section-title">Profil Académique</h2>
-            </div>
-            
-            <div class="content-grid">
-                <div class="info-card">
-                    <h4>Formation Académique</h4>
-                    <ul class="info-list">
-                        <li>Né le <span class="highlight">10 septembre 1967 à Kisangani</span>, RDC</li>
-                        <li>Diplômé en <span class="highlight">sciences politiques et administratives</span> à l'Université de Kisangani (1985–1990)</li>
-                        <li>Docteur en science politique à l'<span class="highlight">Université Paris 1 Panthéon-Sorbonne</span></li>
-                    </ul>
-                </div>
-                
-                <div class="info-card">
-                    <h4>Carrière Universitaire</h4>
-                    <ul class="info-list">
-                        <li>Professeur ordinaire à l'Université de Kisangani (UniKis)</li>
-                        <li>Chercheur associé au <span class="highlight">Centre d'étude des mondes africains (CEMAF)</span> du CNRS</li>
-                        <li>Enseignant invité dans plusieurs universités africaines, dont l'Université Catholique d'Afrique Centrale à Yaoundé</li>
-                    </ul>
-                </div>
-            </div>
+<section id="publications">
+  <h2>Publications</h2>
+  <ul>
+    <li>« Gouvernance et conflits en RDC »</li>
+    <li>« L’État en Afrique: entre autorité et légitimité »</li>
+    <li>Articles dans Revue Politique Africaine, Cahiers d’Études Africaines...</li>
+  </ul>
+</section>
 
-            <div class="btn-group">
-                <a href="https://fr.wikipedia.org/wiki/Alphonse_Maindo" class="btn" target="_blank">
-                    📖 Biographie sur Wikipédia
-                </a>
-            </div>
-        </section>
+<section id="recherche">
+  <h2>Recherche</h2>
+  <p>Thématiques: gouvernance, décentralisation, conflits armés, société civile. Collaborations avec CODESRIA, Université de Liège, CNRS.</p>
+  <div class="search-box">
+    <input type="text" placeholder="Rechercher une publication...">
+  </div>
+</section>
 
-        <!-- Section Engagements -->
-        <section id="engagement" class="section section-hidden">
-            <div class="section-header">
-                <div class="section-icon">🏛️</div>
-                <h2 class="section-title">Engagements Politiques et Sociaux</h2>
-            </div>
-            
-            <div class="content-grid">
-                <div class="info-card">
-                    <h4>Leadership Associatif</h4>
-                    <ul class="info-list">
-                        <li>Cofondateur du <span class="highlight">Groupe Horeb</span>, organisation de défense des droits humains</li>
-                        <li>Coordonnateur du programme <span class="highlight">Démocratie et Développement</span> au <span class="highlight">Gorée Institute</span> (Sénégal)</li>
-                    </ul>
-                </div>
-                
-                <div class="info-card">
-                    <h4>Contributions Publiques</h4>
-                    <ul class="info-list">
-                        <li>Intervenant régulier dans les débats publics sur la gouvernance</li>
-                        <li>Expert en processus électoraux et réformes en RDC</li>
-                        <li>Consultant pour diverses organisations internationales</li>
-                    </ul>
-                </div>
-            </div>
-        </section>
+<section id="liens">
+  <h2>Liens officiels</h2>
+  <div class="links">
+    <a href="https://fr.wikipedia.org/wiki/Alphonse_Maindo" target="_blank">Wikipédia</a>
+<a href="https://www.idref.fr/059674962" target="_blank">IDRef</a>
+    <a href="https://github.com/mixmille91-png/Alphonse_maindo" target="_blank">GitHub académique</a>
+    <a href="https://www.librairiedialogues.fr/personne/alphonse-maindo-monga-ngonga/826700/" target="_blank">Librairie Dialogues</a>
+  </div>
+</section>
 
-        <!-- Section Bibliographie -->
-        <section id="bibliography" class="section section-hidden">
-            <div class="section-header">
-                <div class="section-icon">📚</div>
-                <h2 class="section-title">Bibliographie Sélective</h2>
-            </div>
-            
-            <div class="table-container">
-                <table class="publication-table">
-                    <thead>
-                        <tr>
-                            <th>Titre</th>
-                            <th>Type</th>
-                            <th>Éditeur / Revue</th>
-                            <th>Année</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><strong>Voter en temps de guerre – Kisangani (RD Congo) 1997</strong></td>
-                            <td>Livre</td>
-                            <td>L'Harmattan</td>
-                            <td>2001</td>
-                        </tr>
-                        <tr>
-                            <td><strong>L'université en chantier en RD Congo</strong> (avec Pascal Kapagama)</td>
-                            <td>Livre</td>
-                            <td>Karthala</td>
-                            <td>2012</td>
-                        </tr>
-                        <tr>
-                            <td><strong>La républiquette de l'Ituri</strong></td>
-                            <td>Article</td>
-                            <td>Politique africaine n°89</td>
-                            <td>2003</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Survivre à la guerre des autres</strong></td>
-                            <td>Article</td>
-                            <td>Politique africaine n°84</td>
-                            <td>2001</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Polycarpe Divito: l'hibernation d'un millionnaire en Ituri</strong></td>
-                            <td>Article</td>
-                            <td>Politique africaine</td>
-                            <td>2003</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
+<section id="contact">
+  <h2>Contact</h2>
+  <p>Email: alphonse.maindo@unikis.ac.cd</p>
+</section>
 
-            <div class="btn-group">
-                <a href="https://shs.cairn.info/publications-de-alphonse-maindo-monga-ngonga--90659?lang=fr" class="btn" target="_blank">
-                    📄 Publications sur Cairn.info
-                </a>
-                <a href="https://rdc.harmattan.fr/index.asp?navig=auteurs&obj=artiste&no=14635" class="btn btn-outline" target="_blank">
-                    📚 Catalogue L'Harmattan
-                </a>
-                <a href="https://www.laprocure.com/author/0-124728/maindo-monga-ngonga-alphonse" class="btn btn-outline" target="_blank">
-                    🛒 Livres sur La Procure
-                </a>
-            </div>
-        </section>
+<script>
+  function toggleMenu() {
+    const menu = document.getElementById('menu');
+    menu.classList.toggle('active');
+}
+</script>
 
-        <!-- Section Actualité -->
-        <section id="news" class="section section-hidden">
-            <div class="section-header">
-                <div class="section-icon">🗣️</div>
-                <h2 class="section-title">Actualité Récente</h2>
-            </div>
-            
-            <div class="content-grid">
-                <div class="info-card">
-                    <h4>Événement Actuel - Août 2024</h4>
-                    <p>En août 2024, le Professeur Maindo a été convoqué au parquet général de la Tshopo. Il a rassuré le public sur sa liberté et la transparence de la procédure via une déclaration sur sa page Facebook.</p>
-                    
-                    <div class="btn-group">
-                        <a href="https://depechesdelatshopo.com/kisangani-les-premiers-mots-du-professeur-alphonse-maindo-apres-sa-comparution-de-ce-lundi-au-parquet-general-de-la-tshopo" class="btn" target="_blank">
-                            📰 Lire l'article complet
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </div>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="footer-content">
-            <p>&copy; 2024 Université de Kisangani - Tous droits réservés</p>
-            <p>Page dédiée au Professeur Alphonse Maindo</p>
-        </div>
-    </footer>
-
-    <script>
-        // Navigation mobile
-        const navToggle = document.getElementById('navToggle');
-        const navMenu = document.getElementById('navMenu');
-        const navLinks = document.querySelectorAll('.nav-link');
-
-        navToggle.addEventListener('click', () => {
-            navMenu.classList.toggle('active');
-            navToggle.classList.toggle('active');
-        });
-
-        // Fermer le menu au clic sur un lien
-        navLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                navMenu.classList.remove('active');
-                navToggle.classList.remove('activ
+</body>
+</html>
